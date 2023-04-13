@@ -4,10 +4,37 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { AccessTime } from "@mui/icons-material";
 import Rating from "@mui/material/Rating";
+import { createTheme, ThemeProvider } from "@mui/material";
+
+const theme = createTheme({
+  components: {
+    MuiTypography: {
+      variants: [
+        {
+          props: {
+            variant: "body2"
+          },
+          style: {
+            fontSize: 11,
+          }
+        },
+        {
+          props: {
+            variant: "body3"
+          },
+          style: {
+            fontSize: 9,
+          }
+        }
+      ]
+    }
+  }
+})
 
 const TourCard = () => {
   return (
     <Grid item xs={3}>
+      <ThemeProvider theme={theme}>
       <Paper>
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmPgAeEfqHAjb_SWcGcz0UCDU9TkYaKLWT_Hoaz8jujQ&s"
@@ -36,7 +63,13 @@ const TourCard = () => {
               alignItems: "center",
             }}
           >
-            <Rating name="read-only" value={4.5} precision={.5} size="small" readOnly/>
+            <Rating
+              name="read-only"
+              value={4.5}
+              precision={0.5}
+              size="small"
+              readOnly
+            />
             <Typography variant="body2" component="p" marginLeft={0.5}>
               4.5
             </Typography>
@@ -45,18 +78,24 @@ const TourCard = () => {
             </Typography>
           </Box>
           <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-          }}
-          marginTop={1}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+            }}
+            marginTop={1}
           >
-            <Typography variant="h6" component="h3" marginLeft={0.5} marginTop={0}>
+            <Typography
+              variant="h6"
+              component="h3"
+              marginLeft={0.5}
+              marginTop={0}
+            >
               From C $465
             </Typography>
           </Box>
         </Box>
       </Paper>
+      </ThemeProvider>
     </Grid>
   );
 };
