@@ -31,19 +31,19 @@ const theme = createTheme({
   }
 })
 
-const TourCard = (props) => {
+const TourCard = ({tour}) => {
   return (
     <Grid item xs={3}>
       <ThemeProvider theme={theme}>
       <Paper>
         <img
-          src={props.image}
+          src={tour.image}
           alt=""
           className="img"
         />
         <Box px={1}>
           <Typography variant="subtitle2" component="h2">
-            {props.name}
+            {tour.name}
           </Typography>
           <Box
             sx={{
@@ -54,7 +54,7 @@ const TourCard = (props) => {
           >
             <AccessTime sx={{ width: 12.5 }} />
             <Typography variant="body2" component="p" marginLeft={0.5}>
-              {props.duration} hours
+              {tour.duration} hours
             </Typography>
           </Box>
           <Box
@@ -65,16 +65,16 @@ const TourCard = (props) => {
           >
             <Rating
               name="read-only"
-              value={props.rating}
+              value={tour.rating}
               precision={0.5}
               size="small"
               readOnly
             />
             <Typography variant="body2" component="p" marginLeft={0.5}>
-            {props.rating}
+            {tour.rating}
             </Typography>
             <Typography variant="body3" component="p" marginLeft={1.5}>
-              ({props.numberOfReviews} reviews)
+              ({tour.numberOfReviews} reviews)
             </Typography>
           </Box>
           <Box
@@ -90,7 +90,7 @@ const TourCard = (props) => {
               marginLeft={0.5}
               marginTop={0}
             >
-              From C ${props.price}
+              From C ${tour.price}
             </Typography>
           </Box>
         </Box>

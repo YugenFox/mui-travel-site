@@ -11,9 +11,10 @@ function App() {
     <div className="App">
       <SearchAppBar />
       <Container sx={{ marginY: 5 }}>
-        {cities.map((city) => (
+        {cities.map((city, index) => (
           <>
             <Typography
+              key={index}
               variant="h4"
               component="h2"
               marginTop={5}
@@ -22,9 +23,10 @@ function App() {
               Top {city.name} Tours
             </Typography>
             <Grid container spacing={5}>
-              {city.tours.map((tour) => (
+              {city.tours.map((tour, index) => (
                 <TourCard 
-                {...tour}
+                key={index}
+                tour= {tour}
                 />
               ))}
             </Grid>
